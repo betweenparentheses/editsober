@@ -10,11 +10,13 @@ app.use(bodyParser.json());
 
 
 router.get('/', function(req, res){
-    res.send('This is just a microservice. Try again with a real endpoint.')
+    res.end('This is just an empty endpoint for a service that isn\'t for you! :(')
+    // to test the /txt service
+    // res.send('<form action = "/txt" method ="POST"><input type="text" name="text"/><input type="submit"/></form> ')
   })
   .post('/txt', function(req, res){
     res.set({
-      "Content-Disposition":"attachment; filename=\"writedrunk"+ new Date.toDateString()+".txt\""
+      "Content-Disposition":"attachment; filename=\"writedrunk-" + new Date().toDateString()+".txt\""
     });
     res.send(req.body.text);
   });
