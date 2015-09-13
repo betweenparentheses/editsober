@@ -9,12 +9,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-router.post('/txt', function(req, res){
-  res.set({
-    "Content-Disposition":"attachment; filename=\"writedrunk"+ new Date.toDateString()+".txt\""
+router.get('/', function(req), res){
+    res.send('This is just a microservice. Try again with a real endpoint.')
+  })
+  .post('/txt', function(req, res){
+    res.set({
+      "Content-Disposition":"attachment; filename=\"writedrunk"+ new Date.toDateString()+".txt\""
+    });
+    res.send(req.body.text);
   });
-  res.send(req.body.text);
-});
 
 
 app.use('/', router);
