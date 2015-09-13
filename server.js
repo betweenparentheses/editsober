@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-router.get('/', function(req), res){
+router.get('/', function(req, res){
     res.send('This is just a microservice. Try again with a real endpoint.')
   })
   .post('/txt', function(req, res){
