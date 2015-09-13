@@ -10,11 +10,15 @@ app.use(bodyParser.json());
 
 
 router.get('/', function(req, res){
-    res.end('This is just an empty endpoint for a service that isn\'t for you! :(')
     // to test the /txt service
     // res.send('<form action = "/txt" method ="POST"><input type="text" name="text"/><input type="submit"/></form> ')
+
+
+    res.end('This is just an empty endpoint for a service that isn\'t for you! :(')
   })
   .post('/txt', function(req, res){
+    if (req.body.token !== "s3cret-W0wWwWw") {return res.send(403);};
+
     res.set({
       "Content-Disposition":"attachment; filename=\"writedrunk-" + new Date().toDateString()+".txt\""
     });
