@@ -8,12 +8,15 @@ var router = express.Router();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use(function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
+
+
 
 router.get('/', function(req, res){
-    // to test the /txt service
-    // res.send('<form action = "/txt" method ="POST"><input type="text" name="text"/><input type="submit"/></form> ')
-
-
     res.end('This is just an empty endpoint for a service that isn\'t for you! :(')
   })
   .post('/txt', function(req, res){
